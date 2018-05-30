@@ -16,14 +16,16 @@ Mostre a respectiva mensagem após a validação dos valores.
 """
 entrada = input().split()
 t = ([float(i) for i in entrada])
-# não é a maneira correta =(
-a = t.pop(0)
-b = t.pop(0)
-c = t.pop(0)
-d = t.pop(0)
 
+d = {}
+num = 0
 
-if a % 2 == 0 and (c >= 0 and d >= 0) and b > c and d > a and (a+b) < (c+d):
+for v in t:
+    d[chr(97 + num)] = v
+    num += 1
+
+if d['a'] % 2 == 0 and (d['c'] >= 0 and d['d'] >= 0) and d['b'] > d['c'] and d['d'] > d['a'] \
+        and (d['a'] + d['b']) < (d['c'] + d['d']):
     print("Valores aceitos")
 else:
     print("Valores nao aceitos")
