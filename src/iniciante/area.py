@@ -16,6 +16,7 @@ O valor calculado deve ser apresentado com 3 dígitos após o ponto decimal."""
 
 PI = 3.14159
 
+
 # h.b /2
 def area_triangulo(h , b):
     print("TRIANGULO: {:.3f}".format(h*b / 2))
@@ -30,22 +31,22 @@ def area_circulo(raio):
 def area_trapezio(b1, b2 , h):
     print("TRAPEZIO: {:.3f}".format(((b1+b2) * h / 2)))
 
+
 # lado*lado
 def area_quadrado(lado):
     print("QUADRADO: {:.3f}".format(lado*lado))
+
 
 #
 def area_retangulo(altura, base):
     print("RETANGULO: {:.3f}".format(altura * base))
 
+
 valores = input().split()
-abc = ([float(i) for i in valores])
-# não é a maenira correta =(
-a = abc.pop(0)
-b = abc.pop(0)
-c = abc.pop(0)
-area_triangulo(c, a)
-area_circulo(c)
-area_trapezio(a, b, c)
-area_quadrado(b)
-area_retangulo(a, b)
+abc = [float(i) for i in valores]
+
+area_triangulo(abc[2], abc[0])
+area_circulo(abc[2])
+area_trapezio(abc[0], abc[1], abc[2])
+area_quadrado(abc[1])
+area_retangulo(abc[0], abc[1])

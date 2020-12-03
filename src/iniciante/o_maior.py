@@ -9,7 +9,5 @@ Saída
 Imprima o maior dos três valores seguido por um espaço e a mensagem "eh o maior".
 
 """
-valores = input().split()
-v = ([int(i) for i in valores])
-v1 = ([abs(a) for a in v])
-print("{} eh o maior".format(max(v1)))
+valores = [int(v) for v in input().split()]
+print("{} eh o maior".format(max(valores)))

@@ -9,18 +9,13 @@ e a segunda linha contém dois valores de ponto flutuante x2 y2.
 Saída  1 7 5 9  = 4.4721
 Calcule e imprima o valor da distância segundo a fórmula fornecida, com 4 casas após o ponto decimal.
 """
-
 xy1 = input().split()
 xy2 = input().split()
 x_y = ([float(i) for i in xy1])
-x_y2 = ([float(i) for i in xy2])
-x1 = x_y.pop(0)
-x2 = x_y2.pop(0)# Pode e deve ser melhorado
-y1 = x_y.pop(0)
-y2 = x_y2.pop(0)
+x_y2 = [float(i) for i in xy2]
 
-num1 = (x2-x1) ** 2
-num2 = (y2-y1) ** 2
+num1 = (x_y2[0] - x_y[0]) ** 2
+num2 = (x_y2[1] - x_y[1]) ** 2
 
 fim = (num1 + num2) ** (1/2)
 
