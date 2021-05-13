@@ -11,69 +11,43 @@ Imprima o valor lido e, em seguida, a quantidade mínima de notas de cada tipo n
 
 """
 entrada = float(input())
-n100 = 0
-n50 = 0
-n20 = 0
-n10 = 0
-n5 = 0
-n2 = 0
-m1 = 0
-m2 = 0
-m3 = 0
-m4 = 0
-m5 = 0
-m6 = 0
 
-while entrada >= 0.01:
-    if entrada >= 100:
-        n100 += 1
-        entrada -= 100
-    if 100 > entrada >= 50:
-        n50 += 1
-        entrada -= 50
-    if 50 > entrada >= 20:
-        n20 += 1
-        entrada -= 20
-    if 20 > entrada >= 10:
-        n10 += 1
-        entrada -= 10
-    if 10 > entrada >= 5:
-        n5 += 1
-        entrada -= 5
-    if 5 > entrada >= 2:
-        n2 += 1
-        entrada -= 2
-    if 2 > entrada >= 1:
-        m1 += 1
-        entrada -= 1
-    if 1 > entrada >= 0.50:
-        m2 += 1
-        entrada -= 0.50
-    if 0.50 > entrada >= 0.25:
-        m3 += 1
-        entrada -= 0.25
-    if 0.25 > entrada >= 0.10:
-        m4 += 1
-        entrada -= 0.10
-    if 0.10 > entrada >= 0.05:
-        m5 += 1
-        entrada -= 0.05
-    if 0.05 > entrada >= 0.009:
-        m6 += 1
-        entrada -= 0.01
+saidas = {
+    '100.00': 0,
+    '50.00': 0,
+    '20.00': 0,
+    '10.00': 0,
+    '5.00': 0,
+    '2.00': 0,
+    '1.00': 0,
+    '0.50': 0,
+    '0.25': 0,
+    '0.10': 0,
+    '0.05': 0,
+    '0.01': 0,
+}
 
-print("NOTAS:")
-print("{} nota(s) de R$ 100.00".format(n100))
-print("{} nota(s) de R$ 50.00".format(n50))
-print("{} nota(s) de R$ 20.00".format(n20))
-print("{} nota(s) de R$ 10.00".format(n10))
-print("{} nota(s) de R$ 5.00".format(n5))
-print("{} nota(s) de R$ 2.00".format(n2))
-print("MOEDAS:")
-print("{} moeda(s) de R$ 1.00".format(m1))
-print("{} moeda(s) de R$ 0.50".format(m2))
-print("{} moeda(s) de R$ 0.25".format(m3))
-print("{} moeda(s) de R$ 0.10".format(m4))
-print("{} moeda(s) de R$ 0.05".format(m5))
-print("{} moeda(s) de R$ 0.01".format(m6))
 
+def subtrai_valor(key):
+    global entrada
+    if round(entrada, 2) >= round(float(key), 2):
+        saidas[key] = saidas[key] + 1
+        entrada -= round(float(key), 2)
+        subtrai_valor(key)
+
+
+def meu_print(i, value, key):
+    if i == 0:
+        print('NOTAS:')
+    if i == 6:
+        print('MOEDAS:')
+
+    if float(key) > 1:
+       tipo = "nota"
+    else:
+       tipo = "moeda"
+    print(f'{value} {tipo}(s) de R$ {key}')
+
+
+[subtrai_valor(key) for key in saidas.keys()]
+[meu_print(i, tuple[1], tuple[0]) for i, tuple in enumerate(saidas.items())]
